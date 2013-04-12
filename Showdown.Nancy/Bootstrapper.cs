@@ -2,6 +2,7 @@
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
 using Nancy.Conventions;
+using Nancy.Diagnostics;
 using Ninject;
 
 namespace Showdown.Nancy
@@ -21,10 +22,16 @@ namespace Showdown.Nancy
 
         }
 
+        protected override DiagnosticsConfiguration DiagnosticsConfiguration
+        {
+            get { return new DiagnosticsConfiguration { Password = @"myawesomepassword" }; }
+        }
+
         protected override void ApplicationStartup(IKernel container, IPipelines pipelines)
         {
             // No registrations should be performed in here, however you may
             // resolve things that are needed during application startup.
+            DiagnosticsHook.Disable(pipelines);
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)

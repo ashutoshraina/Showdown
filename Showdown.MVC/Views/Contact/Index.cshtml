@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Common/Layout.cshtml";
+}
+
+<div class="container">
+    <form class="form-horizontal well">
+        <fieldset>
+            <legend>Send Me a Message</legend>
+        <div class="control-group">
+            <div class="controls">
+                <input class="span2" type="text" placeholder="Name" required="required">
+                <br/>
+            </div>
+        </div>
+            <div class="control-group">
+                <div class="controls">
+                    <input class="span2" type="text" placeholder="Email">
+                    <br/>
+                </div>
+                </div>
+        <div class="controls">
+            <textarea class="input-xlarge" id="message" placeholder="Message" required="required" rows="5"></textarea>
+            <br/>
+        </div>
+            <div class="control-group">
+                <div class="controls">
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
