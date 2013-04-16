@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Reviews";
+    Layout = "~/Views/Common/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Reviews</title>
+</head>
+    
+    <body>
+        
+        <div class="container">
+
+            <div class="row">
+            
+                <div class="span10 offset1">
+                    <form class="well form-search pull-right">
+                        <input type="text" placeholder="Restaurant Name" class="input-medium search-query"/>
+                        <button type="submit" class="btn">Search</button>
+                    </form> 
+                </div>
+
+                <div class="span10 offset1">
+                
+                    <div>
+                        <ul class="pager">
+                            <li class="previous">
+                                <a href="#">Previous</a>
+                            </li>
+                            <li class="previous">
+                                <a href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <h2>Joint Name</h2>
+
+                    <ul class="nav  nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#review">Review</a></li>
+                        <li><a data-toggle="tab" href="#contact">Contact</a></li>
+                        <li><a data-toggle="tab" href="#map">Map</a></li>
+                        <li><a data-toggle="tab" href="#links">Links</a></li>
+                    </ul>
+        
+                    <div class="tabbable">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="review">
+                                <p>The review for the joint</p>
+                            </div>
+                            <div class="tab-pane" id="contact">
+                                <p>The conatct for the joint</p>
+                            </div>
+                            <div class="tab-pane" id="map">
+                                <p>The map for the joint</p>
+                            </div>
+                            <div class="tab-pane" id="links">
+                                <p>The web address for the joint</p>
+                            </div>
+                        </div>
+            
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

@@ -40,18 +40,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="#">Showdown</a>
+                
+                <!-- 
+                    Passing the route values as null here, since there is nothing to pass as of now.
+                    -->
+
+                @Html.ActionLink("Showdown", "Index","Home",null,new {@class = "brand"})
+
                 <div class="nav-collapse collapse">
                     <ul class="nav">
                         
                         <li class="active">
-                           <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            @Html.ActionLink("Home", "Index", "Home")
                         </li>
 
                         <li class ="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Photos</a></li>
+                                <li><a href="/Home/Index#photos">Photos</a></li>
                                 <li><a href="#">Videos</a></li>
                             </ul>
                         </li>
@@ -59,40 +65,34 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tips <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                 <li>@Html.ActionLink("Pastry", "Pastry", "Tips")</li>
-                                 <li>@Html.ActionLink("Bread", "Bread", "Tips")</li>
-                                 <li>@Html.ActionLink("Cakes", "Cakes", "Tips")</li>
+                                <li>@Html.ActionLink("Pastry", "Pastry", "Tips")</li>
+                                <li>@Html.ActionLink("Bread", "Bread", "Tips")</li>
+                                <li>@Html.ActionLink("Cakes", "Cakes", "Tips")</li>
                                 <li class="divider"></li>   
                                 <li class="nav-header">HotSpots</li>
                                 <li><a href="#">Where to buy?</a></li>
                                 <li><a href="#">Where to eat?</a></li>
                             </ul>
                         </li>
-                        <li><a href="#review">Reviews</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li>@Html.ActionLink("Reviews","Index","Review")</li>
+                        <li>@Html.ActionLink("Recipes","Index","Recipes")</li>
+                        <li>@Html.ActionLink("About","Index","About")</li>
                         <li>@Html.ActionLink("Contact", "Index", "Contact")</li>
                     </ul>
                     
                 </div>
                 <!--/.nav-collapse -->
 
-                <form class="navbar-form pull-right">
-                <input class="span2" type="text" placeholder="Email">
-                <input class="span2" type="password" placeholder="Password">
-                <button type="submit" class="btn">Sign in</button>
-         </form>
-            </div>
-        </div>
-    </div>
-    
+            </div><!-- /container -->
+        </div>    
+    </div>  
+
     <div class="container">
-        
-        <footer>
+        <hr/>
+        <footer id="footer">
             <p>&copy; Showdown2013</p>
         </footer>
-
-    </div> <!-- /container -->
-    
+    </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
@@ -101,5 +101,8 @@
 
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/main.js"></script>
+    
+
+
 </body>
 </html>
