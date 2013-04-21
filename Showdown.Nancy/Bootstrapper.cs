@@ -18,7 +18,8 @@ namespace Showdown.Nancy
             );
 
             nancyConventions.StaticContentsConventions.Add(
-                StaticContentConventionBuilder.AddDirectory("/", "/_root", new[] { ".png", ".txt"}));
+                StaticContentConventionBuilder.AddDirectory("/", "/_root", 
+                                                            new[] { ".png", ".txt"}));
 
         }
 
@@ -32,6 +33,7 @@ namespace Showdown.Nancy
             // No registrations should be performed in here, however you may
             // resolve things that are needed during application startup.
             DiagnosticsHook.Disable(pipelines);
+            Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Views/", viewName));
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)

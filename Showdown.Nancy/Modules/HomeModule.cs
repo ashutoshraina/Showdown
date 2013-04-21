@@ -1,16 +1,15 @@
 ﻿using Nancy;
 
-namespace Showdown.Nancy
+namespace Showdown.Nancy.Modules
 {
-    public class HomeModule : NancyModule
+    public class HomeModule : BaseModule
     {
         public HomeModule()
         {
             Get["/"] = _ =>
-            {
-                dynamic viewBag = new DynamicDictionary();
-                viewBag.WelcomeMessage = "Welcome to Nancy!";
-                return View["home", viewBag];
+                {
+                    Page.Title = Page.PreFixTitle + "Index";
+                    return View["/Home/Index",Page];
             };
         }
     }
