@@ -1,6 +1,6 @@
 ﻿using Nancy;
-using Showdown.Nancy.Models;
 using System.Dynamic;
+using Showdown.Nancy.ViewModels;
 
 namespace Showdown.Nancy.Modules
 {

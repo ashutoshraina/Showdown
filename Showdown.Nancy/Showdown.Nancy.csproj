@@ -40,36 +40,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation">
-      <HintPath>..\packages\FluentValidation.3.4.6.0\lib\Net40\FluentValidation.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Nancy">
-      <HintPath>..\packages\Nancy.0.16.1\lib\net40\Nancy.dll</HintPath>
+    <Reference Include="Nancy, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.0.17.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Bootstrappers.Ninject">
-      <HintPath>..\packages\Nancy.Bootstrappers.Ninject.0.16.1\lib\net40\Nancy.Bootstrappers.Ninject.dll</HintPath>
+    <Reference Include="Nancy.Bootstrappers.Ninject, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.Bootstrappers.Ninject.0.17.0\lib\net40\Nancy.Bootstrappers.Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Hosting.Aspnet">
-      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.16.1\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+    <Reference Include="Nancy.Hosting.Aspnet, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.17.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.RouteHelpers">
       <HintPath>..\packages\Nancy.RouteHelpers.1.0.8\lib\Nancy.RouteHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Validation.DataAnnotations">
-      <HintPath>..\packages\Nancy.Validation.DataAnnotations.0.16.1\lib\net40\Nancy.Validation.DataAnnotations.dll</HintPath>
+    <Reference Include="Nancy.Validation.DataAnnotations, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.Validation.DataAnnotations.0.17.0\lib\net40\Nancy.Validation.DataAnnotations.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Validation.FluentValidation">
-      <HintPath>..\packages\Nancy.Validation.FluentValidation.0.16.1\lib\net40\Nancy.Validation.FluentValidation.dll</HintPath>
+    <Reference Include="Nancy.ViewEngines.Razor, Version=0.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.17.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.ViewEngines.Razor">
-      <HintPath>..\packages\Nancy.Viewengines.Razor.0.16.3\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+    <Reference Include="Ninject, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.0.2-unstable-9\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Ninject.Extensions.ChildKernel">
-      <HintPath>..\packages\Ninject.Extensions.ChildKernel.3.0.0.5\lib\net45-full\Ninject.Extensions.ChildKernel.dll</HintPath>
+    <Reference Include="Ninject.Extensions.ChildKernel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Extensions.ChildKernel.3.0.2-unstable-2\lib\net45-full\Ninject.Extensions.ChildKernel.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -80,16 +81,15 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Razor.Unofficial">
+    <Reference Include="System.Web.Razor.Unofficial, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
@@ -122,10 +122,11 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Custom404Handler.cs" />
-    <Compile Include="Models\ErrorModel.cs" />
-    <Compile Include="Models\PageModel.cs" />
+    <Compile Include="ViewModels\ErrorModel.cs" />
+    <Compile Include="ViewModels\PageModel.cs" />
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Modules\MessageModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +140,8 @@
     <Content Include="Views\Common\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\Unread.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -176,8 +179,8 @@
   <PropertyGroup>
     <PostBuildEvent>
 if $(ConfigurationName) == Debug (
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.16.3\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.16.3\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.17.0\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.17.0\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

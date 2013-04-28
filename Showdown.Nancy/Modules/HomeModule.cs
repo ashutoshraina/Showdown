@@ -1,6 +1,4 @@
-﻿using Nancy;
-
-namespace Showdown.Nancy.Modules
+﻿namespace Showdown.Nancy.Modules
 {
     public class HomeModule : BaseModule
     {
@@ -10,7 +8,7 @@ namespace Showdown.Nancy.Modules
                 {
                     Page.Title = Page.PreFixTitle + "Index";
                     return View["/Home/Index",Page];
-            };
+                };
         }
     }
 }
