@@ -18,8 +18,7 @@ namespace Showdown.Nancy
             );
 
             nancyConventions.StaticContentsConventions.Add(
-                StaticContentConventionBuilder.AddDirectory("/", "/_root", 
-                                                            new[] { ".png", ".txt"}));
+                StaticContentConventionBuilder.AddDirectory("/", "/_root", new[] { ".png", ".txt" }));
 
         }
 

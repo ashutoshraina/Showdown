@@ -22,26 +22,12 @@ namespace Showdown.Nancy.Modules
     {
         public MessageModule() : base("messages")
         {
-            var message = new Message
-                        {
-                            Id = 1 , 
-                            Name = "ashutosh", 
-                            Email= "ashutoshraina1989@gmail.com",
-                            MessageContent ="Wassup Baker"
-                        };
-            var message2 = new Message
-            {
-                Id = 1,
-                Name = "Awesome",
-                Email = "awesomeness@gmail.com",
-                MessageContent = "Wassup Baker"
-            };
-            var messages = new List<Message> {message, message2};
-            Model = messages;
+            
+            Model = GetMessages();
 
             Get["/all"] = parameters =>
                 {
-                    return View["/Message/Index", messages];
+                    return View["/Message/Index", Model];
                 };
 
             Get["/unread"] = parameters =>
@@ -55,6 +41,26 @@ namespace Showdown.Nancy.Modules
                     
                     return HttpStatusCode.OK;
                  };
+        }
+
+        private dynamic GetMessages()
+        {
+            var message = new Message
+            {
+                Id = 1,
+                Name = "ashutosh",
+                Email = "ashutoshraina1989@gmail.com",
+                MessageContent = "Wassup Baker"
+            };
+            var message2 = new Message
+            {
+                Id = 1,
+                Name = "Awesome",
+                Email = "awesomeness@gmail.com",
+                MessageContent = "Wassup Baker"
+            };
+
+            return  new List<Message> { message, message2 };
         }
     }
 }
