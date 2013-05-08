@@ -1,0 +1,59 @@
+﻿@using Showdown.Model
+@using Showdown.Nancy.HtmlExtensions;
+
+@{
+    ViewBag.Title = "Create Tip";
+    Layout = "/Common/_Layout";
+}
+
+@RenderBody()
+
+<body>
+    <section id ="Messages">
+        <div class="container">
+            
+            <div class="btn-group pull-right">
+                <a class="btn btn-primary" href="#">Tips</a>
+                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/tips/list">All</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/tips/search">Search</a></li>
+                </ul>
+                <br />
+            </div>
+            
+            <hgroup>
+                <h1>Create a New Tip</h1>
+            </hgroup>
+
+            <form action="/tips/create/" method="Post">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Content</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="span3">
+                                <select name="tiptype" id="tiptype">
+                                    @foreach (var enumValue in EnumUtil.GetValues<TipType>())
+                                    {
+                                        <option value='@enumValue'>@enumValue</option>
+                                    }
+                                </select>
+                            </td>
+                            <td>
+                                <textarea class="input-xlarge" name="content" required="required" rows = 7 style= "width:550px"></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </section>
+</body>

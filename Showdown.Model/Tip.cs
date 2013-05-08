@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace Showdown.Model
 {
     public class Tip
@@ -8,6 +10,8 @@ namespace Showdown.Model
         public TipType Type { get; set; }
 
         public string Content { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 
     public enum TipType

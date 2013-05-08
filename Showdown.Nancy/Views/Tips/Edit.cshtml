@@ -1,0 +1,44 @@
+﻿@inherits  NancyRazorViewBase<Showdown.Model.Tip>
+
+@{
+    ViewBag.Title = "Edit Tip";
+    Layout = "/Common/_Layout";
+}
+
+@RenderBody()
+
+<body>
+    <section id ="Messages">
+        <div class="container">
+            
+            <hgroup>
+                <h1>Edit</h1>
+            </hgroup>
+
+            <form action="/tips/edit/@Model.Id" method="Post">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Content</th>
+                            <th>CreatedDate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.Id</td>
+                            <td>@Model.Type</td>
+                            <td>
+                                <textarea class="input-xlarge" name="Content" required="required" >@Model.Content</textarea>
+                            </td>
+                            <td>@Model.CreatedOn</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+    </section>
+</body>

@@ -1,4 +1,4 @@
-﻿@inherits  NancyRazorViewBase<System.Collections.Generic.IEnumerable<Showdown.Nancy.Modules.Message>>
+﻿@inherits  NancyRazorViewBase<System.Collections.Generic.IEnumerable<Showdown.Model.Message>>
 
 @{
     ViewBag.Title = "title";
@@ -44,31 +44,28 @@
             </div>
             <div class="modal-body">
                 <div>
-                    <textarea aria-multiline="true" class="input-xlarge" id ="responseMessage"></textarea>
+                    <textarea aria-multiline="true" class="input-xlarge" id ="responseMessage" rows="12" placeholder="Your Reply Here" style="width:500px"></textarea>
                 </div>
             </div>
             
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button class="btn btn-primary" onclick="sendReplyOfMessage(responseMessage.value)">Save changes</button>
+                <button class="btn btn-primary" onclick="sendReplyOfMessage(responseMessage.value)">Send Reply</button>
             </div>
         </div>
 
         <script>
 
-            function sendReplyOfMessage(data)
-            {
-                    var url = "/messages/response";
-                    var postData = { "content": data };
-                    $.post(
-                             url,
-                             postData,
-                            function(response) {
-                                alert(response);
-                            }
-                        );
-            }
-            
+            function sendReplyOfMessage(data) {
+                var url = "/messages/response";
+                var postData = { "content": data };
+                var request = $.post(url, postData);
+                
+                request.done(function(result) {
+                    $('#replyModal').hide();
+                });
+            };
+                
         </script>
 
     </section>

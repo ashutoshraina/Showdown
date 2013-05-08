@@ -1,22 +1,9 @@
 ﻿using System.Collections.Generic;
 using Nancy;
+using Showdown.Model;
 
 namespace Showdown.Nancy.Modules
 {
-    public class Message
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-
-        public string MessageContent { get; set; }
-
-        public bool HasBeenRead { get; set; }
-
-        public string Response { get; set; }
-    }
 
     public class MessageModule : BaseModule
     {
@@ -25,32 +12,37 @@ namespace Showdown.Nancy.Modules
             
             Model = GetMessages();
 
-            Get["/all"] = parameters =>
+            Get["/list"] = 
+                parameters =>
                 {
                     return View["/Message/Index", Model];
                 };
 
-            Get["/unread"] = parameters =>
+            Get["/unread"] = 
+                parameters =>
                 {
                     return View["/Message/Unread", Model];
                 };
+
             Post["/response"] = 
                 parameters =>
                 {
-                    var stream = Request.Form["content"];
+                    var message = Request.Form["message"];
                     
                     return HttpStatusCode.OK;
-                 };
+                };
         }
 
-        private dynamic GetMessages()
+        private List<Message> GetMessages()
         {
             var message = new Message
             {
                 Id = 1,
                 Name = "ashutosh",
                 Email = "ashutoshraina1989@gmail.com",
-                MessageContent = "Wassup Baker"
+                MessageContent = @"Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+                                   Nullam id dolor id nibh ultricies vehicula ut id elit.Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. 
+                                   Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui."
             };
             var message2 = new Message
             {

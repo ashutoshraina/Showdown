@@ -1,4 +1,6 @@
-﻿using Nancy;
+﻿using System.Globalization;
+using System.Threading;
+using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Bootstrappers.Ninject;
 using Nancy.Conventions;
@@ -38,6 +40,10 @@ namespace Showdown.Nancy
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
         {
             // Perform registation that should have an application lifetime
+            CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone ( );
+            culture.DateTimeFormat.ShortDatePattern = "dd-MMM-yyyy";
+            culture.DateTimeFormat.LongTimePattern = "";
+            Thread.CurrentThread.CurrentCulture = culture;
         }
 
         protected override void ConfigureRequestContainer(IKernel container, NancyContext context)

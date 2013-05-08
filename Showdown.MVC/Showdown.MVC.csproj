@@ -124,11 +124,10 @@
     <Content Include="assets\css\bootstrap.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\main.css" />
-    <Content Include="assets\favicon.ico" />
+    <Content Include="favicon.ico" />
     <Content Include="assets\humans.txt" />
     <Content Include="assets\img\glyphicons-halflings-white.png" />
     <Content Include="assets\img\glyphicons-halflings.png" />
-    <Content Include="assets\index.html" />
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\plugins.js" />
     <Content Include="assets\js\vendor\bootstrap.js" />

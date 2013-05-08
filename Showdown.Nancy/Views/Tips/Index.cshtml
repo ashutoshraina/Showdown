@@ -1,0 +1,66 @@
+﻿@using Showdown.Model
+@using System.Collections.Generic
+
+@inherits  NancyRazorViewBase<IEnumerable<Tip>>
+
+@{
+    ViewBag.Title = "Tips";
+    Layout = "/Common/_Layout";
+}
+
+@helper DisplayTip()
+    {
+        <h2>Tips</h2>
+        <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Type</th>
+                        <th>Content</th>
+                        <th>CreatedDate</th>
+                        <th>Take Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var m in Model)
+                        {
+                            <tr>
+                                <td>@m.Id</td>
+                                <td>@m.Type</td>
+                                <td><p>@m.Content</p></td>
+                                <td>@m.CreatedOn</td>
+                                <td>
+                                    <a href="/tips/edit/@m.Id">Edit</a>
+
+                                    <form id="form-delete-tip" method ="Post" action="/tips/delete/@m.Id">
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                        <a href="#" onclick="document.getElementById('form-delete-tip').submit();">Delete</a>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        }
+                </tbody>
+        </table>
+    }
+
+@RenderBody()
+
+<body>
+    <section id ="Messages">
+        <div class="container">
+            
+            <div class="btn-group pull-right">
+                <a class="btn btn-primary" href="#">Tips</a>
+                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/tips/create">Create</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/tips/search">Search</a></li>
+                </ul>
+                <br />
+            </div>
+                @DisplayTip()
+        </div>
+    </section>
+</body>
