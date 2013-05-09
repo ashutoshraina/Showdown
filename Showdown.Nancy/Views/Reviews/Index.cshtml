@@ -1,0 +1,12 @@
+﻿@inherits NancyRazorViewBase<System.Collections.Generic.IEnumerable<dynamic>>
+@{
+    ViewBag.Title = "Reviews";
+    Layout = "/common/_Layout";
+}
+
+<h2>title</h2>
+@foreach (dynamic item in Model)
+{
+    @item.name
+    @item.age
+}

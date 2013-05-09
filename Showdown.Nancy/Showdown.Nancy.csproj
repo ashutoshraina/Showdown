@@ -122,6 +122,8 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Custom404Handler.cs" />
     <Compile Include="HtmlExtensions\HtmlExtensions.cs" />
+    <Compile Include="Modules\RestaurentModule.cs" />
+    <Compile Include="Modules\ReviewModule.cs" />
     <Compile Include="Modules\TipsModule.cs" />
     <Compile Include="ViewModels\ErrorModel.cs" />
     <Compile Include="ViewModels\PageModel.cs" />
@@ -141,12 +143,16 @@
     <Content Include="Views\Common\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Message\Unread.cshtml" />
+    <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Messages\Unread.cshtml" />
     <Content Include="Views\Tips\Index.cshtml" />
     <Content Include="Views\Tips\Create.cshtml" />
     <Content Include="Views\Tips\Edit.cshtml" />
     <Content Include="Views\Tips\Search.cshtml" />
+    <Content Include="Views\Reviews\Index.cshtml" />
+    <Content Include="Views\Reviews\Create.cshtml" />
+    <Content Include="Views\Restaurents\Index.cshtml" />
+    <Content Include="Views\Restaurents\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

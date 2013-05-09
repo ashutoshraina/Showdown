@@ -1,6 +1,4 @@
 ﻿
-using System.Collections.Generic;
-
 namespace Showdown.Model
 {
     public class Review

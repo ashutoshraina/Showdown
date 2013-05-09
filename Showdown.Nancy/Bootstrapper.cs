@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.Threading;
 using Nancy;
 using Nancy.Bootstrapper;
@@ -40,10 +41,7 @@ namespace Showdown.Nancy
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
         {
             // Perform registation that should have an application lifetime
-            CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone ( );
-            culture.DateTimeFormat.ShortDatePattern = "dd-MMM-yyyy";
-            culture.DateTimeFormat.LongTimePattern = "";
-            Thread.CurrentThread.CurrentCulture = culture;
+           
         }
 
         protected override void ConfigureRequestContainer(IKernel container, NancyContext context)
@@ -55,6 +53,16 @@ namespace Showdown.Nancy
         {
             // No registrations should be performed in here, however you may
             // resolve things that are needed during request startup.
+
+            base.RequestStartup ( container, pipelines, context );
+
+            var culture = (CultureInfo)context.Culture.Clone ();
+            culture.DateTimeFormat.ShortDatePattern = "dd-MM-yyyy";
+            pipelines.BeforeRequest += ctx =>
+            {
+                Thread.CurrentThread.CurrentCulture = culture;
+                return null;
+            };
         }
     }
 }

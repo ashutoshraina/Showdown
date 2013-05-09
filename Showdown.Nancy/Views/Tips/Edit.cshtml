@@ -1,5 +1,4 @@
-﻿@inherits  NancyRazorViewBase<Showdown.Model.Tip>
-
+﻿@inherits   Nancy.ViewEngines.Razor.NancyRazorViewBase<Showdown.Model.Tip>
 @{
     ViewBag.Title = "Edit Tip";
     Layout = "/Common/_Layout";
@@ -32,7 +31,7 @@
                             <td>
                                 <textarea class="input-xlarge" name="Content" required="required" >@Model.Content</textarea>
                             </td>
-                            <td>@Model.CreatedOn</td>
+                            <td>@Model.CreatedOn.ToShortDateString()</td>
                         </tr>
                     </tbody>
                 </table>

@@ -5,10 +5,10 @@
         public HomeModule()
         {
             Get["/"] = _ =>
-                {
-                    Page.Title = Page.PreFixTitle + "Index";
-                    return View["/Home/Index",Page];
-                };
+                       {
+                           Page.Title = Page.PreFixTitle + "Index";
+                           return View["/Home/Index", Page];
+                       };
         }
     }
 }
