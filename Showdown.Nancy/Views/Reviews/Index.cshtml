@@ -1,12 +1,84 @@
-﻿@inherits NancyRazorViewBase<System.Collections.Generic.IEnumerable<dynamic>>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<IEnumerable<Showdown.Model.Restaurant>>
+@using System.Collections.Generic;
+@using System.Linq
+@using Showdown.Model
+
 @{
     ViewBag.Title = "Reviews";
     Layout = "/common/_Layout";
 }
 
-<h2>title</h2>
-@foreach (dynamic item in Model)
-{
-    @item.name
-    @item.age
+@helper DisplayRestaurant( Restaurant restaurant )
+    {
+    <br />
+    <div class="testimonial">
+        <div class="quote">
+            <p>
+               @restaurant.Review.FirstOrDefault().Content;
+            </p>
+        </div>
+        <div class="triangle"></div>
+        <img class="photo" src="img/nerel.jpg" width="65" alt="Nerel Photo">
+        <div class="name">@restaurant.Name</div>
+        <div class="byline">
+            <a href="@restaurant.UsefulLinks.FirstOrDefault()">@restaurant.UsefulLinks.FirstOrDefault()</a>
+        </div>
+    </div>
+
 }
+
+@RenderBody()
+
+<body>
+    <section id="Reviews">
+        <div class="page-header offset1">
+            <hgroup>
+                <h4 class="pull-right">
+                    <a href="#New Review">Create a Review</a>
+                </h4>
+                <h1>Reviews
+                </h1>
+            </hgroup>
+        </div>
+
+        <div class="container">
+
+
+            @{
+                foreach (var restaurant in Model)
+                    {
+                <div class="row offset1">
+                    @DisplayRestaurant( restaurant )
+                </div>
+                    }
+            }
+        </div>
+
+    </section>
+
+    <section id="New Review">
+        <br />
+
+        <div class="testimonial offset2">
+            <hgroup>
+                <h2>Create a New Review</h2>
+                <h5>Select the Restaurant to Review.</h5>
+            </hgroup>
+
+            <form action="/review/create/" method="Post">
+                <select name="restaurant" id="restaurant">
+                    @foreach (var restaurant in Model)
+                        {
+                    
+                        <option value="@restaurant.Id">@restaurant.Name</option>
+                                                                   
+                        }
+                </select>
+                <br />
+                <textarea name="new-review" id="new-review" placeholder="Review" rows="10" style="width: 550px;"></textarea>
+                <br />
+                <button class="btn btn-primary" type="submit">Create Review</button>
+            </form>
+        </div>
+    </section>
+</body>

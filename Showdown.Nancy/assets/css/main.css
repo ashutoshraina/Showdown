@@ -3,20 +3,70 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+.testimonial .quote {
+    padding: 45px 50px 45px 65px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    background-color: white;
+    background-position: -14px 36px;
+    -moz-background-size: 85px;
+    -o-background-size: 85px;
+    -webkit-background-size: 85px;
+    background-size: 85px;
+    background-repeat: no-repeat;
+    -webkit-box-shadow: 0 2px 8px -3px #000000;
+    -webkit-box-shadow: 0 2px 8px -3px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 8px -3px #000000;
+    box-shadow: 0 2px 8px -3px rgba(0,0,0,0.3);
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    line-height: 26px;
+}
 
+.testimonial .triangle {
+    width: 40px;
+    height: 28px;
+    margin-top: -2px;
+    margin-left: 85px;
+    background-position: left 50%;
+    -moz-background-size: 49px;
+    -o-background-size: 49px;
+    -webkit-background-size: 49px;
+    background-size: 49px;
+    background-repeat: no-repeat;
+    background-image: url(../img/quote-triangle.png);
+}
+.testimonial .photo {
+    margin-right: 20px;
+    float: left;
+    border: 4px solid #fdfdfd;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 0 1px #ccc, 0 1px 6px -1px #000000;
+    -webkit-box-shadow: 0 0 0 1px #ccc, 0 1px 6px -1px rgba(0,0,0,0.3);
+    box-shadow: 0 0 0 1px #ccc, 0 1px 6px -1px #000000;
+    box-shadow: 0 0 0 1px #ccc, 0 1px 6px -1px rgba(0,0,0,0.3);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.testimonial .name {
+    padding-top: 13px;
+    padding-bottom: 7px;
+    color: #d6843e;
+    font-size: 19px;
+}
+.testimonial .byline {
+    font-family: 'Vollkorn', serif;
+    color: #7a7a7a;
+    font-size: 17px;
+    font-style: italic;
+}
+@media (max-width: 767px) {
+    .testimonial {
+        margin-bottom: 37px;
+    }
+}
+@media (max-width: 480px) {
+    .testimonial .quote {
+        padding: 37px 31px 38px 33px;
+    }
+}

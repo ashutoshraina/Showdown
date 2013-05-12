@@ -1,0 +1,129 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<IEnumerable<Showdown.Model.Restaurant>>
+
+@using System.Collections.Generic;
+@using System.Linq
+@using Showdown.Model
+
+@{
+    ViewBag.Title = "Restaurant";
+    Layout = "/common/_Layout";
+}
+
+@helper DisplayRestaurant(Restaurant restaurant)
+{
+            <div class="span5">
+                                    <h3 id="tabs">@restaurant.Name</h3>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#review" data-toggle="tab">Review</a></li>
+                                        <li><a href="#web" data-toggle="tab">Web</a></li>
+                                        <li><a href="#photos" data-toggle="tab">Photos</a></li>
+                                        <li><a href="#location" data-toggle="tab">Location</a></li>
+                                        <li><a href="#map" data-toggle="tab">Map</a></li>
+                                    </ul>
+                                    <div class="tabbable">
+                                        <div class="tab-content">
+
+                                            <div class="tab-pane active" id="review">
+                                                @foreach (var review in @restaurant.Review)
+                                                {
+                                                    
+                                                    <blockquote>
+                                                        @review.Content
+                                                    </blockquote>
+                                                    <p>
+                                                        Rating : @review.Rating
+                                                    </p>
+                                                    <p>
+                                                        Review Date : @review.ReviewDate.ToShortDateString()
+                                                    </p> 
+                                                    <br />  
+                                                }
+                                            </div>
+
+                                            <div class="tab-pane" id="web">
+                                                @foreach (var link in @restaurant.UsefulLinks)
+                                                {
+                                                    <a href="@link">@link</a>
+                                                    <br />
+                                                }
+                                            </div>
+
+                                            <div class="tab-pane" id="photos">
+                                                @foreach (var link in @restaurant.UsefulLinks)
+                                                {
+                                                    <a href="@link">@link</a>
+                                                    <br />
+                                                }
+                                            </div>
+
+                                            <div class="tab-pane" id="location">
+                                                Address
+                                                <address>
+                                                    @restaurant.Address
+                                                </address>
+                                                <br />
+                                                Phones :  
+                                                @foreach (var phone in @restaurant.PhoneNumber)
+                                                {
+                                                    <br />
+                                                    <span itemprop="telephone">
+                                                        <a href=callto:@phone >@phone</a>
+                                                    </span>
+                                                }
+                                            </div>
+                                            <div class="tab-pane" id="map">
+                                                <p>The map goes here</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /tabbable -->
+
+                                </div>
+}
+
+@RenderBody()
+
+<body>
+    <section id="Restaurant">
+        <div class="page-header offset1">
+            <header>
+                <h1>
+                    Restaurants
+                </h1>
+            </header>
+          </div>   
+
+            <div class="container">
+            @{
+                var even = Model.Count() % 2 == 0;
+                var restaurants = Model.ToArray();
+                if (even)
+                {
+                    for (int i = 0; i < Model.Count() - 1; i = i + 2)
+                    {
+                        <div class="row offset1">
+                            @DisplayRestaurant(restaurants[i])
+                            @DisplayRestaurant(restaurants[i + 1])
+                        </div>
+                    }
+                }
+                else
+                {
+                    for (int i = 1; i <= Model.Count(); i = i + 2)
+                    {
+                        <div class="row offset1">
+                            @DisplayRestaurant(restaurants[i -1])
+                            @if (i != Model.Count())
+                            {
+                                @DisplayRestaurant(restaurants[i])
+                            }
+                        </div>
+                    }
+                }
+
+            }
+        </div>
+        
+    </section>
+</body>
+

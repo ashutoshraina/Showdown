@@ -1,0 +1,81 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<IEnumerable<Showdown.Model.Restaurant>>
+@using System.Collections.Generic;
+@using System.Linq
+@using Showdown.Model
+@{
+    ViewBag.Title = "Restauarant";
+    Layout = "/common/_Layout";
+}
+
+@RenderBody()
+<body>
+    <section id="Restaurants">
+        <div class="page-header offset1">
+            <header>
+                <h1>Restaurants
+                </h1>
+            </header>
+        </div>
+
+        <div class="container">
+
+            <form class="form-horizontal well" method="post" action="/restaurant/create" enctype="multipart/form-data">
+                
+                <fieldset>
+                    <legend>Create Restuarant</legend>
+                </fieldset>
+
+                <div class="control-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" id="name" name="name" required="required"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="address">Address</label>
+                    <div class="controls">
+                        <textarea placeholder="Address" class="input-xlarge" id="address" name="address" rows="4" required="required"></textarea>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="phone">Phone</label>
+                    <div class="controls">
+                        <textarea placeholder="Phones" class="input-xlarge" id="phone" name="phone" rows="4"></textarea>
+                        <p class="help-block">Phone numbers ( if multiple ) muse be comma separated</p>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="photos">Photos</label>
+                    <div class="controls">
+                        <input type="file" multiple="multiple" class="input-xlarge" id="photos" name="photos" />
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="website">Website</label>
+                    <div class="controls">
+                        <input type="url" class="input-xlarge" id="website" name="website" required="required"/>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="control-label" for="link">Useful Link</label>
+                    <div class="controls">
+                        <input type="url" class="input-xlarge" id="link" name="link" />
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="reset" class="btn">Reset</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+</body>

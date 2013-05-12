@@ -93,6 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="assets\img\quote-triangle.png" />
     <Content Include="_root\apple-touch-icon-114x114-precomposed.png" />
     <Content Include="_root\apple-touch-icon-144x144-precomposed.png" />
     <Content Include="_root\apple-touch-icon-57x57-precomposed.png" />
@@ -122,7 +123,7 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Custom404Handler.cs" />
     <Compile Include="HtmlExtensions\HtmlExtensions.cs" />
-    <Compile Include="Modules\RestaurentModule.cs" />
+    <Compile Include="Modules\RestaurantModule.cs" />
     <Compile Include="Modules\ReviewModule.cs" />
     <Compile Include="Modules\TipsModule.cs" />
     <Compile Include="ViewModels\ErrorModel.cs" />
@@ -149,10 +150,9 @@
     <Content Include="Views\Tips\Create.cshtml" />
     <Content Include="Views\Tips\Edit.cshtml" />
     <Content Include="Views\Tips\Search.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
-    <Content Include="Views\Reviews\Create.cshtml" />
-    <Content Include="Views\Restaurents\Index.cshtml" />
-    <Content Include="Views\Restaurents\Create.cshtml" />
+    <Content Include="Views\Restaurants\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

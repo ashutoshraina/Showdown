@@ -16,6 +16,10 @@ namespace Showdown.Model
 
         public string Longitude { get; set; }
 
+        public IEnumerable<string> Images { get; set; }
+
         public IEnumerable<string> UsefulLinks { get; set; }
+
+        public IEnumerable<Review> Review { get; set; }
     }
 }
