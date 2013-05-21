@@ -54,32 +54,32 @@ namespace Showdown.Nancy.Modules
 									 new Restaurant
 									 {
 										 Id = 2, Name = "Restaurant 2", Address = "Flat # 201 , Plot # 266 , Sector # 28 , Vashi",
-										 UsefulLinks = new List<string> {"http://google.com", "http://yahoo.com"},
+										 UsefulLinks = new List<string> {"http://google.com", "http://flickr.com"},
 										 PhoneNumber = new List<string> {"+91-9699090749", "+91-020-6453245"},
-										 Review = new List<Review> { new Review {Id = 1, Rating = 4, Content = "My awesome review" }}
+										 Review = new List<Review> { new Review {Id = 1, Rating = 2, Content = "My awesome review" }}
 									 },
 									 new Restaurant
 									 {
 										 Id = 3, Name = "Restaurant 3", Address = "Flat # 201 , Plot # 266 , Sector # 28 , Vashi",
-										 UsefulLinks = new List<string> {"http://google.com", "http://yahoo.com"},
+										 UsefulLinks = new List<string> {"http://facebook.com", "http://yahoo.com"},
 										 PhoneNumber = new List<string> {"+91-9699090749", "+91-020-6453245"},
-										 Review = new List<Review> { new Review {Id = 1, Rating = 4, Content = "My awesome review" }}
+										 Review = new List<Review> { new Review {Id = 1, Rating = 3, Content = "My awesome review" }}
 									 },
 									 new Restaurant
 									 {
-										 Id = 1,
+										 Id = 4,
 										 Name = "Restaurant 4 ",
 										 Address = "Flat # 201 , Plot # 266 , Sector # 28 , Vashi",
-										 UsefulLinks = new List<string> {"http://google.com", "http://yahoo.com"},
+										 UsefulLinks = new List<string> {"http://google.com", "http://twitter.com"},
 										 PhoneNumber = new List<string> {"+91-9699090749", "+91-020-6453245"},
 										Review = new List<Review> { new Review {Id = 1, Rating = 4, Content = "My awesome review" }}
 									 },
 									 new Restaurant
 									 {
-										 Id = 1, Name = "Restaurant 5 ", Address = "Flat # 201 , Plot # 266 , Sector # 28 , Vashi",
+										 Id = 5, Name = "Restaurant 5 ", Address = "Flat # 201 , Plot # 266 , Sector # 28 , Vashi",
 										 UsefulLinks = new List<string> {"http://google.com", "http://yahoo.com"},
 										 PhoneNumber = new List<string> {"+91-9699090749", "+91-020-6453245"},
-										 Review = new List<Review> { new Review {Id = 1, Rating = 4, Content = "My awesome review" }}
+										 Review = new List<Review> { new Review {Id = 1, Rating = 5, Content = "My awesome review" }}
 									 }
 								 };
 			}

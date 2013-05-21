@@ -12,6 +12,5 @@ namespace Showdown.MVC.Controllers
             ViewBag.Title = "Home";
             return View();
         }
-
     }
 }

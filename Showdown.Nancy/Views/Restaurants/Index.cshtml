@@ -11,74 +11,70 @@
 
 @helper DisplayRestaurant(Restaurant restaurant)
 {
-            <div class="span5">
-                                    <h3 id="tabs">@restaurant.Name</h3>
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#review" data-toggle="tab">Review</a></li>
-                                        <li><a href="#web" data-toggle="tab">Web</a></li>
-                                        <li><a href="#photos" data-toggle="tab">Photos</a></li>
-                                        <li><a href="#location" data-toggle="tab">Location</a></li>
-                                        <li><a href="#map" data-toggle="tab">Map</a></li>
-                                    </ul>
-                                    <div class="tabbable">
-                                        <div class="tab-content">
+    <div class="span5" id="@restaurant.Id">
+        <h3 id="tabs">@restaurant.Name</h3>
+        <ul class="nav nav-tabs">
+            <li class="active"><a  data-toggle="tab" onclick="activateCorrectDiv(($(this).closest('div').attr('id')),'review')">Review</a></li>
+            <li><a  data-toggle="tab" onclick="activateCorrectDiv(($(this).closest('div').attr('id')),'web')">Web</a></li>
+            <li><a  data-toggle="tab" onclick="activateCorrectDiv(($(this).closest('div').attr('id')),'photos')">Photos</a></li>
+            <li><a  data-toggle="tab" onclick="activateCorrectDiv(($(this).closest('div').attr('id')),'location')">Location</a></li>
+            <li><a  data-toggle="tab" onclick="activateCorrectDiv(($(this).closest('div').attr('id')),'map')">Map</a></li>
+        </ul>
+        <div class="tabbable">
+            <div class="tab-content">
 
-                                            <div class="tab-pane active" id="review">
-                                                @foreach (var review in @restaurant.Review)
-                                                {
-                                                    
-                                                    <blockquote>
-                                                        @review.Content
-                                                    </blockquote>
-                                                    <p>
-                                                        Rating : @review.Rating
-                                                    </p>
-                                                    <p>
-                                                        Review Date : @review.ReviewDate.ToShortDateString()
-                                                    </p> 
-                                                    <br />  
-                                                }
-                                            </div>
+                <div class="tab-pane active" id="review">
+                    @foreach (var review in @restaurant.Review)
+                        {
+                        <blockquote>
+                            @review.Content
+                        </blockquote>
+                        <p>
+                            Rating : @review.Rating
+                        </p>
+                        <p>
+                            Review Date : @review.ReviewDate.ToShortDateString()
+                        </p> 
+                        <br />  
+                         }
+                </div>
 
-                                            <div class="tab-pane" id="web">
-                                                @foreach (var link in @restaurant.UsefulLinks)
-                                                {
-                                                    <a href="@link">@link</a>
-                                                    <br />
-                                                }
-                                            </div>
+                <div class="tab-pane" id="web">
+                    @foreach (var link in @restaurant.UsefulLinks)
+                        {
+                        <a href="@link">@link</a>
+                        <br />
+                        }
+                </div>
 
-                                            <div class="tab-pane" id="photos">
-                                                @foreach (var link in @restaurant.UsefulLinks)
-                                                {
-                                                    <a href="@link">@link</a>
-                                                    <br />
-                                                }
-                                            </div>
+                <div class="tab-pane" id="photos">
+                   No photos for @restaurant.Id
+                </div>
 
-                                            <div class="tab-pane" id="location">
-                                                Address
-                                                <address>
-                                                    @restaurant.Address
-                                                </address>
-                                                <br />
-                                                Phones :  
-                                                @foreach (var phone in @restaurant.PhoneNumber)
-                                                {
-                                                    <br />
-                                                    <span itemprop="telephone">
-                                                        <a href=callto:@phone >@phone</a>
-                                                    </span>
-                                                }
-                                            </div>
-                                            <div class="tab-pane" id="map">
-                                                <p>The map goes here</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /tabbable -->
+                <div class="tab-pane" id="location">
+                    Address
+                    <address>
+                        @restaurant.Address
+                    </address>
+                    <br />
+                    Phones :  
+                    @foreach (var phone in @restaurant.PhoneNumber)
+{
+    <br />
+    <span itemprop="telephone">
+        <a href=callto:@phone >@phone</a>
+    </span>
+}
+                </div>
 
-                                </div>
+                <div class="tab-pane" id="map">
+                    <p>The map goes here</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- /tabbable -->
+    </div>
 }
 
 @RenderBody()
@@ -120,10 +116,15 @@
                         </div>
                     }
                 }
-
             }
         </div>
-        
     </section>
 </body>
-
+<script type="text/javascript">
+    
+    function activateCorrectDiv(restaurantName , e) {
+        $('.tab-pane').removeClass('active');
+        $('#' + restaurantName + ' #' + e).addClass('active');
+    };
+    
+</script>
