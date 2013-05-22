@@ -24,7 +24,6 @@
             <a href="@restaurant.UsefulLinks.FirstOrDefault()">@restaurant.UsefulLinks.FirstOrDefault()</a>
         </div>
     </div>
-
 }
 
 @RenderBody()
@@ -34,16 +33,13 @@
         <div class="page-header offset1">
             <hgroup>
                 <h4 class="pull-right">
-                    <a href="#New Review">Create a Review</a>
+                    <a href="#reviewModal" role="alert" class="btn btn-info" data-toggle="modal">Create a Review</a>
                 </h4>
                 <h1>Reviews
                 </h1>
             </hgroup>
         </div>
-
         <div class="container">
-
-
             @{
                 foreach (var restaurant in Model)
                     {
@@ -53,32 +49,58 @@
                     }
             }
         </div>
-
     </section>
 
     <section id="New Review">
         <br />
+        <div id="reviewModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-body">
+                
+                <hgroup>
+                    <h2>Create a New Review</h2>
+                    <h5>Select the Restaurant to Review.</h5>
+                </hgroup>
 
-        <div class="testimonial offset2">
-            <hgroup>
-                <h2>Create a New Review</h2>
-                <h5>Select the Restaurant to Review.</h5>
-            </hgroup>
-
-            <form action="/review/create/" method="Post">
-                <select name="restaurant" id="restaurant">
-                    @foreach (var restaurant in Model)
+                <form id="form_review">
+                    <select name="restaurant" id="restaurant">
+                        @foreach (var restaurant in Model)
                         {
-                    
-                        <option value="@restaurant.Id">@restaurant.Name</option>
-                                                                   
+                            <option value="@restaurant.Id">@restaurant.Name</option>
                         }
-                </select>
-                <br />
-                <textarea name="new-review" id="new-review" placeholder="Review" rows="10" style="width: 550px;"></textarea>
-                <br />
-                <button class="btn btn-primary" type="submit">Create Review</button>
-            </form>
+                    </select>
+                    <br />
+                    <textarea name="new-review" id="new-review" placeholder="Review" rows="10" style="width: 550px;"></textarea>
+                    <br />
+                </form>
+
+            </div>
+            
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                <button class="btn btn-primary" type="submit" onclick="createReview()">Create Review</button>
+            </div>
+
+
         </div>
     </section>
+    
+    <script type="text/javascript">
+        function createReview()
+        {
+            var url = "/review/create/";
+            var postData = $('#form_review').serialize();
+            var request = $.post(url, postData);
+
+            request.done(function () {
+                bootbox.alert("Review Created Successfully!");
+                $('#reviewModal').modal('hide').destroy();
+            });
+
+            request.fail(function () {
+                bootbox.alert("Review could not be created!");
+                $('#reviewModal').modal('hide').destroy();
+            });
+
+        }
+    </script>
 </body>

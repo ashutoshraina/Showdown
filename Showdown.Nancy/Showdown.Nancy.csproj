@@ -94,6 +94,8 @@
   <ItemGroup>
     <Content Include="404.html" />
     <Content Include="assets\img\quote-triangle.png" />
+    <Content Include="assets\js\vendor\bootbox.js" />
+    <Content Include="assets\js\vendor\bootbox.min.js" />
     <Content Include="_root\apple-touch-icon-114x114-precomposed.png" />
     <Content Include="_root\apple-touch-icon-144x144-precomposed.png" />
     <Content Include="_root\apple-touch-icon-57x57-precomposed.png" />

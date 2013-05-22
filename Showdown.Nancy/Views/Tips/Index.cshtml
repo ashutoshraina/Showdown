@@ -24,21 +24,23 @@
                 <tbody>
                     @foreach (var m in Model)
                         {
-                            <tr>
-                                <td>@m.Id</td>
-                                <td>@m.Type</td>
-                                <td><p>@m.Content</p></td>
-                                <td>@m.CreatedOn.ToShortDateString()</td>
-                                <td>
-                                    <a href="/tips/edit/@m.Id">Edit</a>
+                        <tr>
+                            <td>@m.Id</td>
+                            <td>@m.Type</td>
+                            <td>
+                                <p>@m.Content</p>
+                            </td>
+                            <td>@m.CreatedOn.ToShortDateString()</td>
+                            <td>
+                                <a href="/tips/edit/@m.Id">Edit</a>
 
-                                    <form id="form-delete-tip" method ="Post" action="/tips/delete/@m.Id">
-                                        <input type="hidden" name="_method" value="DELETE" />
-                                        <a href="#" onclick="document.getElementById('form-delete-tip').submit();">Delete</a>
-                                    </form>
+                                <form id="form-delete-tip" method ="Post" action="/tips/delete/@m.Id">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                    <a href="#" onclick="document.getElementById('form-delete-tip').submit();">Delete</a>
+                                </form>
 
-                                </td>
-                            </tr>
+                            </td>
+                        </tr>
                         }
                 </tbody>
         </table>

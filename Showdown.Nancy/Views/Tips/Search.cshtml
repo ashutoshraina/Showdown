@@ -10,75 +10,76 @@
 
 @helper DisplayTip()
     {
-        <h2>Tips</h2>
-        <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Type</th>
-                        <th>Content</th>
-                        <th>CreatedDate</th>
-                        <th>Take Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var m in Model)
-                        {
-                            <tr>
-                                <td>@m.Id</td>
-                                <td>@m.Type</td>
-                                <td><p>@m.Content</p></td>
-                                <td>@m.CreatedOn.ToShortDateString()</td>
-                                <td>
-                                    <a href="/tips/edit/@m.Id">Edit</a>
-                                  
-                                    <form id="form-delete-tip" method ="Post" action="/tips/delete/@m.Id">
-                                        <input type="hidden" name="_method" value="DELETE" />
-                                        <a href="#" onclick="document.getElementById('form-delete-tip').submit();">Delete</a>
-                                    </form> 
+    <h2>Tips</h2>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Content</th>
+                <th>CreatedDate</th>
+                <th>Take Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var m in Model)
+                {
+                <tr>
+                    <td>@m.Id</td>
+                    <td>@m.Type</td>
+                    <td>
+                        <p>@m.Content</p>
+                    </td>
+                    <td>@m.CreatedOn.ToShortDateString()</td>
+                    <td>
+                        <a href="/tips/edit/@m.Id">Edit</a>
 
-                                </td>
-                            </tr>
-                        }
-                </tbody>
-        </table>
-    }
+                        <form id="form-delete-tip" method ="Post" action="/tips/delete/@m.Id">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <a href="#" onclick="document.getElementById('form-delete-tip').submit();">Delete</a>
+                        </form>
+
+                    </td>
+                </tr>
+                }
+        </tbody>
+    </table>
+}
 
 @RenderBody()
 
 <body>
-    <section id ="Search">
-                <div class="container">
-                    <div class="row">
-                        <div class="span10 offset1">
-                            <form class="well form-search pull-right" action="/tips/search" method="Post">
-                                <input type="text" name = "content" id="content" placeholder="Search Tip Content" class="input-medium search-query"/>
-                                <button type="submit" class="btn btn-primary">Search</button>
-                            </form> 
-                        </div>
-                    </div>
-                    <div class="row">
-                            <div class="span10 offset1">
-                                @if (Model != null)
-                                {
-                                     if( Model.Count > 0 )
-                                        {
-                                            @DisplayTip()
-                                        }
-                                        else
-                                        {
-                                            <div id="alert-info" class="span4">
-                                                  <div class="alert alert-error">
-                                                    <a class="close" onclick="document.getElementById('alert-info').remove();">X</a>
-                                                      <strong>Error</strong> 
-                                                      Change a few things up and try submitting again.
-                                                  </div>
-                                            </div>
-                                        }
-                                }
-                                
-                            </div>
-                    </div>
+    <section id="Search">
+        <div class="container">
+            <div class="row">
+                <div class="span10 offset1">
+                    <form class="well form-search pull-right" action="/tips/search" method="Post">
+                        <input type="text" name="content" id="content" placeholder="Search Tip Content" class="input-medium search-query" />
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
                 </div>
+            </div>
+            <div class="row">
+                <div class="span10 offset1">
+                    @if (Model != null)
+                        {
+                        if (Model.Count > 0)
+                            {
+                        @DisplayTip()
+                            }
+                        else
+                            {
+                        <div id="alert-info" class="span4">
+                            <div class="alert alert-error">
+                                <a class="close" onclick="document.getElementById('alert-info').remove();">X</a>
+                                <strong>Error</strong>
+                                Change a few things up and try submitting again.
+                            </div>
+                        </div>
+                            }
+                        }
+                </div>
+            </div>
+        </div>
     </section>
 </body>

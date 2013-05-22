@@ -19,6 +19,8 @@ namespace Showdown.Nancy.Modules
 			Post["/create"] =
 				parameter =>
 				{
+					var restaurantId = Request.Form["restaurant"];
+					var review = Request.Form["new-review"];
 					var id = 1;
 					
 					return Response.AsRedirect("/review/list/" + id);

@@ -7,9 +7,9 @@
 @RenderBody()
 
 <body>
-    <section id ="Messages">
+    <section id="Messages">
         <div class="container">
-            
+
             <hgroup>
                 <h1>Edit</h1>
             </hgroup>
@@ -29,7 +29,7 @@
                             <td>@Model.Id</td>
                             <td>@Model.Type</td>
                             <td>
-                                <textarea class="input-xlarge" name="Content" required="required" >@Model.Content</textarea>
+                                <textarea class="input-xlarge" name="Content" required="required">@Model.Content</textarea>
                             </td>
                             <td>@Model.CreatedOn.ToShortDateString()</td>
                         </tr>
