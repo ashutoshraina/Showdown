@@ -1,7 +1,7 @@
 ﻿@using Showdown.Model
 @using System.Collections.Generic
 
-@inherits  NancyRazorViewBase<IEnumerable<Tip>>
+@inherits  Nancy.ViewEngines.Razor.NancyRazorViewBase<IEnumerable<Showdown.Model.Tip>>
 
 @{
     ViewBag.Title = "Tips";
@@ -33,7 +33,9 @@
                             <td>@m.CreatedOn.ToShortDateString()</td>
                             <td>
                                 <a href="/tips/edit/@m.Id">Edit</a>
-
+                                <!-- Not sure about the form here. 
+                                    A hyperlink and a ajax post should suffice as well.
+                                    -->
                                 <form id="form-delete-tip" method ="Post" action="/tips/delete/@m.Id">
                                     <input type="hidden" name="_method" value="DELETE" />
                                     <a href="#" onclick="document.getElementById('form-delete-tip').submit();">Delete</a>

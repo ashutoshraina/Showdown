@@ -124,7 +124,10 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Custom404Handler.cs" />
+    <Compile Include="Helpers\DynamicModelBinder.cs" />
+    <Compile Include="Helpers\EnumerableExtensionForEach.cs" />
     <Compile Include="HtmlExtensions\HtmlExtensions.cs" />
+    <Compile Include="Modules\RecipeModule.cs" />
     <Compile Include="Modules\RestaurantModule.cs" />
     <Compile Include="Modules\ReviewModule.cs" />
     <Compile Include="Modules\TipsModule.cs" />
@@ -155,6 +158,7 @@
     <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Restaurants\Create.cshtml" />
+    <Content Include="Views\Recipes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

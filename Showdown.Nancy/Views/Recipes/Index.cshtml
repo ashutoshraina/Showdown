@@ -1,0 +1,59 @@
+﻿@using Showdown.Model
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<System.Collections.Generic.IEnumerable<Showdown.Model.Recipe>>
+
+@{
+    ViewBag.Title = "Recipes";
+    Layout = "/Common/_Layout";
+}
+
+@helper DisplayRecipes()
+    {
+       <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Content</th>
+                        <th>Category</th>
+                        <th>Ingredients</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var m in Model)
+                        {
+                        <tr>
+                            <td>@m.Id</td>
+                            <td>@m.Name</td>
+                            <td>
+                                <p>@m.Content</p>
+                            </td>
+                            <td>
+                                @foreach (var category in @m.Category)
+                                    {
+                                        <p>@category</p>
+                                    }
+                            </td>
+                            <td>
+                                @foreach (var ingredient in @m.Ingredients)
+                                    {
+                                        <p>@ingredient.Name : @ingredient.Quantity </p>      
+                                    }
+                            </td>
+                            <td>@m.RecipeImageUrl</td>
+                        </tr>
+                        }
+                </tbody>
+        </table>
+    }
+
+@RenderBody()
+<body>
+    <section id ="Recipes">
+        <div class="page-header offset1">
+            Recipes
+        </div>
+        <div class="container offset1">          
+            @DisplayRecipes()
+        </div>
+    </section>
+</body>

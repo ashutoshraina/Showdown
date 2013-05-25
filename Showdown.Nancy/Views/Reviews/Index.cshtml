@@ -55,7 +55,7 @@
         <br />
         <div id="reviewModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-body">
-                
+
                 <hgroup>
                     <h2>Create a New Review</h2>
                     <h5>Select the Restaurant to Review.</h5>
@@ -64,7 +64,7 @@
                 <form id="form_review">
                     <select name="restaurant" id="restaurant">
                         @foreach (var restaurant in Model)
-                        {
+                            {
                             <option value="@restaurant.Id">@restaurant.Name</option>
                         }
                     </select>
@@ -74,7 +74,7 @@
                 </form>
 
             </div>
-            
+
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
                 <button class="btn btn-primary" type="submit" onclick="createReview()">Create Review</button>
