@@ -12,6 +12,10 @@ namespace Showdown.Nancy.Modules
                            {
                              return View["/recipes/Index",GetRecipes()];
                            };
+            Get["/create"] = parameter =>
+                            {
+                            return View["/recipes/create"];
+                            };
             Post["/create"] = parameter =>
                             {
                             return null;

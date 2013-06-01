@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Recipes";
+    Layout = "/Common/_Layout";
+}
+
+@RenderBody()
+ 
+    <section id="New Recipe">
+        
+        <div class="page-header offset1">
+            <h1>
+                Create A Recipe
+            </h1>
+        </div>
+
+        <div class="container offset1">
+        
+            <form id="form_create_recipe"  class="form-horizontal well" action="/recipe/create" method="post" enctype="multipart/form-data">
+
+                <div class="control-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" placeholder="RecipeName" class="input-xlarge" id="name" name="name" required="required"/>
+                    </div>
+                </div>
+                    
+                <div class="control-group">
+                    <label class="control-label" for="content">Content</label>
+                    <div class="controls">
+                        <textarea type="text" placeholder="Content" class="input-xlarge" id="content" name="content" required="required"></textarea>
+                    </div>
+                </div>
+                    
+                <div class="control-group">
+                    <label class="control-label" for="category">Category</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Categories" class="input-xlarge" id="category" name="category" required="required"/>
+                        <p class="help-block">The categories should be comma separated</p>
+                    </div>
+                    
+                </div>
+                    
+                <div class="control-group">
+                    <label class="control-label" for="category">Ingredients</label>
+                    <div class="controls">
+                        <textarea placeholder="Ingredients" class="input-xlarge" id="ingredients" name="ingredients" required="required"></textarea>
+                        <p class="help-block">Write each ingredient as Name:Quantity (in gm). Ingredients must be comma separated</p>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="photos">Photos</label>
+                    <div class="controls">
+                        <input type="file" placeholder="Upload Recipe Image" multiple="multiple" class="input-xlarge" id="photos" name="photos" />
+                    </div>
+                </div>
+        
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Create A Recipe</button>
+                    <button type="reset" class="btn">Reset</button>
+                </div>
+
+            </form> 
+        </div>
+    
+        <script type="text/javascript">
+
+            function createRecipe() {
+
+            };
+
+        </script>
+
+    </section>

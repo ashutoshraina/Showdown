@@ -49,83 +49,18 @@
 
 @RenderBody()
 <body>
-    <section id ="Recipes">
+    <section id="Recipes">
         <div class="page-header offset1">
-            
+
             <div class="pull-right">
-                <a href="#createRecipeModal" role="alert" class="btn btn-info" data-toggle="modal">Create a Recipe</a>
+                <a href="/recipe/create" role="alert" class="btn btn-info" data-toggle="modal">Create a Recipe</a>
             </div>
 
             <h1>Recipes</h1>
         </div>
-        <div class="container offset1">          
+        <div class="container offset1">
             @DisplayRecipes()
         </div>
-        
+
     </section>
-    
-    <section id="New Recipe">
-        <br />
-        <div id="createRecipeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-body">
-
-                <hgroup>
-                    <h2>Create a New Recipe</h2>
-                </hgroup>
-
-                <form id="form_create_recipe" action="/recipe/create" method="post" enctype="multipart/form-data">
-                    <div class="control-group">
-                        <label class="control-label" for="name">Name</label>
-                        <div class="controls">
-                            <input type="text" placeholder="RecipeName" class="input-xlarge" id="name" name="name" required="required"/>
-                        </div>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label" for="content">Content</label>
-                        <div class="controls">
-                            <input type="text" placeholder="Categories" class="input-xlarge" id="content" name="content" required="required"/>
-                        </div>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label" for="category">Category</label>
-                        <div class="controls">
-                            <input type="text" class="input-xlarge" id="category" name="category" required="required"/>
-                        </div>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label class="control-label" for="category">Ingredients</label>
-                        <div class="controls">
-                            <textarea placeholder="Ingredients" class="input-xlarge" id="ingredients" name="ingredients" required="required"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="control-group">
-                        <label class="control-label" for="photos">Photos</label>
-                        <div class="controls">
-                            <input type="file" placeholder="Upload Recipe Image" multiple="multiple" class="input-xlarge" id="photos" name="photos" />
-                        </div>
-                    </div>
-
-                </form>
-
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button class="btn btn-primary" type="submit" onclick="createRecipe()">Create Review</button>
-            </div>
-        </div>
-    </section>
-    
-    <script type="text/javascript">
-
-        function createRecipe() {
-
-        };
-        
-    </script>
-
 </body>
