@@ -93,7 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="404.html" />
+    <Content Include="assets\css\bootstrap-editable.css" />
+    <Content Include="assets\img\bg.png" />
+    <Content Include="assets\img\clear.png" />
+    <Content Include="assets\img\loading.gif" />
     <Content Include="assets\img\quote-triangle.png" />
+    <Content Include="assets\js\vendor\bootstrap-editable.min.js" />
     <Content Include="assets\js\vendor\bootbox.js" />
     <Content Include="assets\js\vendor\bootbox.min.js" />
     <Content Include="_root\apple-touch-icon-114x114-precomposed.png" />
@@ -128,6 +133,7 @@
     <Compile Include="Helpers\EnumerableExtensionForEach.cs" />
     <Compile Include="HtmlExtensions\HtmlExtensions.cs" />
     <Compile Include="Modules\RecipeModule.cs" />
+    <Compile Include="Modules\RecommendModule.cs" />
     <Compile Include="Modules\RestaurantModule.cs" />
     <Compile Include="Modules\ReviewModule.cs" />
     <Compile Include="Modules\TipsModule.cs" />
@@ -148,7 +154,6 @@
     </Content>
     <Content Include="Views\Common\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Messages\Unread.cshtml" />
     <Content Include="Views\Tips\Index.cshtml" />
@@ -160,6 +165,7 @@
     <Content Include="Views\Restaurants\Create.cshtml" />
     <Content Include="Views\Recipes\Index.cshtml" />
     <Content Include="Views\Recipes\Create.cshtml" />
+    <Content Include="Views\Recommend\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,73 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<IEnumerable<Showdown.Model.Recommendation>>
+
+@using System.Collections.Generic;
+@using Showdown.Model
+
+@{
+    ViewBag.Title = "Restaurant";
+    Layout = "/common/_Layout";
+}
+
+@helper DisplayRecommendation(IEnumerable<Recommendation> recommendations)
+{
+   
+    foreach (var recommendation in recommendations)
+        {
+            if (recommendation.RecommendationType == RecommendationType.Buy)
+            {
+                <div  class="span8 offset1 well well-large pull-right">
+                    <h3>@recommendation.RecommendationType</h3>
+                    <p data-name="content" data-type="textarea" data-pk=@recommendation.Id data-url="/recommend" data-original-title="Content">@recommendation.Content</p>
+                    <p data-name="reason" data-type="textarea" data-pk=@recommendation.Id data-url="/recommend" data-original-title="Reason">@recommendation.Reason</p>
+                </div>
+            }
+            else
+            {
+                 <div id=@recommendation.Id class="span8 offset1 well well-large">
+                    <h3>@recommendation.RecommendationType</h3>
+                    <p data-name="content" data-type="textarea" data-pk=@recommendation.Id data-url="/recommend" data-original-title="Content">@recommendation.Content</p>
+                    <p data-name="reason" data-type="textarea" data-pk=@recommendation.Id data-url="/recommend" data-original-title="Reason">@recommendation.Reason</p>
+                </div>
+            }
+        }
+}
+
+@RenderBody()
+<section id="Recommend">
+        <div class="page-header offset1">
+            <div class="pull-right">
+                <a href="/recommend/create" class="btn btn-info">Create a Recommendation</a>
+            </div>
+            <h1>Recommendations</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                @DisplayRecommendation(Model)
+            </div>
+        </div>
+    </section>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="application/javascript">
+    
+             $(document).ready(
+            function() {
+                $('.row p').editable({
+                    ajaxOptions : {
+                        type : 'put'
+                    },
+                    mode: 'popup',
+                    inputclass : 'input-xlarge'
+                });
+                $('.row h3').editable({
+                    type: 'select',
+                    source : [{value: 'Buy', text: "Buy"}, {value: 'Eat', text: "Eat"}],
+                    ajaxOptions: {
+                        type: 'put'
+                    },
+                    mode: 'popup'            
+                });
+            });
+   
+</script>
+
+

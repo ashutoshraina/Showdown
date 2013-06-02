@@ -4,14 +4,15 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <!--<![endif]-->
-<html class="no-js"> 
+<html class="no-js">
+     
     <head>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <title>Showdown.Nancy</title>
 
         <link rel="stylesheet" href="../../assets/css/bootstrap.min.css"/>
-         <style>
+        <style>
             body {
                 padding-top: 60px;
                 padding-bottom: 40px;
@@ -19,76 +20,76 @@
         </style>
         <link rel="stylesheet" href="../../assets/css/bootstrap-responsive.min.css"/>
         <link rel="stylesheet" href="../../assets/css/main.css"/>
-        
+        <link rel="stylesheet" href="../../assets/css/bootstrap-editable.css" >
     </head>
+
     <body>
     
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="#">Showdown</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container offset1">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="/">Showdown</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
                         
-                        <li class="active">
-                            <a href="#">Home</a>
-                        </li>
+                            <li class="active">
+                                <a href="/">Home</a>
+                            </li>
 
-                        <li class ="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Photos</a></li>
-                                <li><a href="#">Videos</a></li>
-                            </ul>
-                        </li>
+                            <li class ="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gallery <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Photos</a></li>
+                                    <li><a href="#">Videos</a></li>
+                                </ul>
+                            </li>
                         
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/recipe/list">Recipes</a></li>
-                                <li><a href="/review/list">Review</a></li>
-                                <li><a href="/restaurant/list">Restaurant</a></li>
-                                <li><a href="#">Recommend</a></li>
-                                <li><a href="/tips/list">Tips</a></li>
-                            </ul>
-                        </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/recipe/list">Recipes</a></li>
+                                    <li><a href="/review/list">Review</a></li>
+                                    <li><a href="/restaurant/list">Restaurant</a></li>
+                                    <li><a href="/recommend/list">Recommend</a></li>
+                                    <li><a href="/tips/list">Tips</a></li>
+                                </ul>
+                            </li>
 
-                        <li>
-                            <a href="#">Site Stats</a>
-                        </li>
-                        <li>
-                            <a href="/messages/unread">Messages</a>
-                        </li>
-                    </ul>
+                            <li>
+                                <a href="#">Site Stats</a>
+                            </li>
+                            <li>
+                                <a href="/messages/unread">Messages</a>
+                            </li>
+                        </ul>
                     
+                    </div>
+                    <!--/.nav-collapse -->
                 </div>
-                <!--/.nav-collapse -->
-             </div>
+            </div>
         </div>
-    </div>
 
+        @RenderBody()
+        <div id="footer">
+            <hr/>
+            <div class="container">
+                <p class="muted">&copy; Showdown2013</p>
+            </div>
+        </div>
 
-@RenderBody()
-   <div class="container">
-        <hr/>
-        <footer id="footer">
-            <p>&copy; Showdown2013</p>
-        </footer>
-    </div>    
-         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>
             window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
         </script>
         <script src="../../assets/js/vendor/bootstrap.min.js"></script>
         <script src="../../assets/js/vendor/bootbox.min.js"></script>
-         <script src="../../assets/js/plugins.js"></script>
-         <script src="../../assets/js/main.js"></script>
-         <script src="../../assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="../../assets/js/plugins.js"></script>
+        <script src="../../assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js"></script>
     </body>
 </html>
-

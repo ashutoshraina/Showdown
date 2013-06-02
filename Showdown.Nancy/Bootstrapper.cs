@@ -36,6 +36,7 @@ namespace Showdown.Nancy
             // resolve things that are needed during application startup.
             DiagnosticsHook.Disable(pipelines);
             Conventions.ViewLocationConventions.Add((viewName, model, context) => string.Concat("Views/", viewName));
+            
         }
 
         protected override void ConfigureApplicationContainer(IKernel existingContainer)
