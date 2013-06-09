@@ -48,19 +48,18 @@
     }
 
 @RenderBody()
-<body>
-    <section id="Recipes">
-        <div class="page-header offset1">
+<section id="Recipes">
+    <div class="page-header offset1">
 
-            <div class="pull-right">
-                <a href="/recipe/create" role="alert" class="btn btn-info" data-toggle="modal">Create a Recipe</a>
-            </div>
-
-            <h1>Recipes</h1>
-        </div>
-        <div class="container offset1">
-            @DisplayRecipes()
+        <div class="pull-right">
+            <a href="/recipe/create" role="alert" class="btn btn-info" data-toggle="modal">Create a Recipe</a>
         </div>
 
-    </section>
-</body>
+        <h1>Recipes</h1>
+    </div>
+    <div class="container offset1">
+        @DisplayRecipes()
+    </div>
+
+</section>
+@section Scripts

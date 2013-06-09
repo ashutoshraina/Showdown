@@ -10,7 +10,7 @@
 
 @helper DisplayTip()
     {
-        <h2>Tips</h2>
+        <h2>Tips</h2>                                                                                      
         <table class="table table-bordered table-striped table-hover">
                 <thead>
                     <tr>
@@ -28,11 +28,10 @@
                             <td>@m.Id</td>
                             <td>@m.Type</td>
                             <td>
-                                <p>@m.Content</p>
+                                <p data-name="content" data-type="textarea" data-pk=@m.Id data-url="/tips/edit/@m.Id" data-original-title="Content">@m.Content</p>
                             </td>
                             <td>@m.CreatedOn.ToShortDateString()</td>
                             <td>
-                                <a href="/tips/edit/@m.Id">Edit</a>
                                 <!-- Not sure about the form here. 
                                     A hyperlink and a ajax post should suffice as well.
                                     -->
@@ -50,21 +49,40 @@
 
 @RenderBody()
 
-<body>
-    <section id ="Messages">
-        <div class="container">
+<section id ="Messages">
+    <div class="container">
             
-            <div class="btn-group pull-right">
-                <a class="btn btn-primary" href="#">Tips</a>
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="/tips/create">Create</a></li>
-                    <li class="divider"></li>
-                    <li><a href="/tips/search">Search</a></li>
-                </ul>
-                <br />
-            </div>
-                @DisplayTip()
+        <div class="btn-group pull-right">
+            <a class="btn btn-primary" href="#">Tips</a>
+            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li><a href="/tips/create">Create</a></li>
+                <li class="divider"></li>
+                <li><a href="/tips/search">Search</a></li>
+            </ul>
+            <br />
         </div>
-    </section>
-</body>
+        <div id="tips">
+            @DisplayTip()
+        </div>
+        
+    </div>
+</section>
+
+
+@section Scripts
+@section MyScripts
+{
+    <script type="application/javascript">
+        $(document).ready(
+            function() {
+                $('#tips').find('p').editable({
+                    ajaxOptions: {
+                        type: 'put'
+                    },
+                    mode: 'inline',
+                    inputclass: 'input-xlarge'
+                });
+            })
+    </script>
+}

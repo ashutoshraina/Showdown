@@ -48,27 +48,26 @@
 
 @RenderBody()
 
-<body>
-    <section id="Search">
-        <div class="container">
-            <div class="row">
-                <div class="span10 offset1">
-                    <form class="well form-search pull-right" action="/tips/search" method="Post">
-                        <input type="text" name="content" id="content" placeholder="Search Tip Content" class="input-medium search-query" />
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </form>
-                </div>
+<section id="Search">
+    <div class="container">
+        <div class="row">
+            <div class="span10 offset1">
+                <form class="well form-search pull-right" action="/tips/search" method="Post">
+                    <input type="text" name="content" id="content" placeholder="Search Tip Content" class="input-medium search-query" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
             </div>
-            <div class="row">
-                <div class="span10 offset1">
-                    @if (Model != null)
-                        {
-                        if (Model.Count > 0)
-                            {
+        </div>
+        <div class="row">
+            <div class="span10 offset1">
+                @if (Model != null)
+                {
+                    if (Model.Count > 0)
+                    {
                         @DisplayTip()
-                            }
-                        else
-                            {
+                    }
+                    else
+                    {
                         <div id="alert-info" class="span4">
                             <div class="alert alert-error">
                                 <a class="close" onclick="document.getElementById('alert-info').remove();">X</a>
@@ -76,10 +75,12 @@
                                 Change a few things up and try submitting again.
                             </div>
                         </div>
-                            }
-                        }
-                </div>
+                    }
+                }
             </div>
         </div>
-    </section>
-</body>
+    </div>
+</section>
+
+
+@section Scripts

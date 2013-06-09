@@ -7,68 +7,70 @@
 
 @RenderBody()
 
-<body>
-    <section id="Messages">
-        <div class="container">
-            <div class="page-header">
-                <table class="table table-bordered table-striped table-hover">
-                    <thead>
+<section id="Messages">
+    <div class="container">
+        <div class="page-header">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Message</th>
+                        <th>Reply</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var m in Model)
+                    {
                         <tr>
-                            <th>Name</th>
-                            <th>Message</th>
-                            <th>Reply</th>
+                            <td>@m.Name</td>
+                            <td>
+                                <p>@m.MessageContent</p>
+                            </td>
+                            <td>
+                                <a href="#replyModal" role="alert" class="btn btn-info" data-toggle="modal">@m.Email</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var m in Model)
-                            {
-                            <tr>
-                                <td>@m.Name</td>
-                                <td>
-                                    <p>@m.MessageContent</p>
-                                </td>
-                                <td>
-                                    <a href="#replyModal" role="alert" class="btn btn-info" data-toggle="modal">@m.Email</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="replyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <div class="page-header">
+                <h3>Send Reply Via Email</h3>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div>
+                <textarea aria-multiline="true" class="input-xlarge" id="responseMessage" rows="12" placeholder="Your Reply Here" style="width: 500px"></textarea>
             </div>
         </div>
 
-        <div id="replyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-header">
-                <div class="page-header">
-                    <h3>Send Reply Via Email</h3>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <textarea aria-multiline="true" class="input-xlarge" id="responseMessage" rows="12" placeholder="Your Reply Here" style="width: 500px"></textarea>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button class="btn btn-primary" onclick="sendReplyOfMessage(responseMessage.value)">Send Reply</button>
-            </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button class="btn btn-primary" onclick="sendReplyOfMessage(responseMessage.value)">Send Reply</button>
         </div>
+    </div>
 
+</section>
+
+@section Scripts
+
+@section MyScripts
+{
         <script type="text/javascript">
 
-            function sendReplyOfMessage(data) {
-                var url = "/messages/response";
-                var postData = { "content": data };
-                var request = $.post(url, postData);
+        function sendReplyOfMessage(data) {
+            var url = "/messages/response";
+            var postData = { "content": data };
+            var request = $.post(url, postData);
 
-                request.done(function () {
-                    $('#replyModal').hide();
-                });
-            };
+            request.done(function () {
+                $('#replyModal').hide();
+            });
+        };
 
-        </script>
-
-    </section>
-
-</body>
+    </script>
+}

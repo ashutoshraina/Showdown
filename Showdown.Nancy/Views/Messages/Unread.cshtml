@@ -7,45 +7,46 @@
 
 @RenderBody()
 
-<body>
-    <section id ="Messages">
-        <div class="container">
-            <div class ="page-header">
-                <table class="table table-bordered table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th class="span6">Messages</th>
+
+<section id ="Messages">
+    <div class="container">
+        <div class ="page-header">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="span6">Messages</th>
                            
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var m in Model)
+                    {
+                        <tr>
+                            <td class="span4">
+                                <blockquote>
+                                    @m.MessageContent
+                                    <br />
+                                    <small class="pull-right"> 
+                                        <cite>By&nbsp;@m.Name</cite>
+                                        <br />
+                                        <cite>@m.Email</cite>
+                                    </small>
+                                </blockquote>
+                                <br/>
+                                <hr />
+                                <form action="/messages/response" method="Post">
+                                    <textarea class="input-xlarge" name="message" placeholder="Reply to Message" required="required" rows="10" style="width : 600px"></textarea>
+                                    <br />
+                                    <br />
+                                    <button type="submit" class="btn btn-primary">Reply To Message</button>
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var m in Model)
-                        {
-                            <tr>
-                                <td class="span4">
-                                    <blockquote>
-                                        @m.MessageContent
-                                        <br />
-                                        <small class="pull-right"> 
-                                            <cite>By&nbsp;@m.Name</cite>
-                                            <br />
-                                            <cite>@m.Email</cite>
-                                        </small>
-                                    </blockquote>
-                                    <br/>
-                                    <hr />
-                                    <form action="/messages/response" method="Post">
-                                        <textarea class="input-xlarge" name="message" placeholder="Reply to Message" required="required" rows="10" style="width : 600px"></textarea>
-                                        <br />
-                                        <br />
-                                        <button type="submit" class="btn btn-primary">Reply To Message</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
-    </section>
-</body>
+    </div>
+</section>
+
+@section Scripts

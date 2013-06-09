@@ -36,7 +36,7 @@ namespace Showdown.Nancy.Modules
                     return View["Tips/Edit", result];
                 };
 
-            Post["/edit/{id}"] =
+            Put["/edit/{id}"] =
                 parameter =>
                 {
                     dynamic id = parameter.id;

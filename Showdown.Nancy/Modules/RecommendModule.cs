@@ -10,8 +10,12 @@ namespace Showdown.Nancy.Modules
         {
             Get["/list"] = parameter =>
                            {
-                               return View["/recommend/Index", GetRecommendations()];
+                               return View["/recommend/index", GetRecommendations()];
                            };
+            Get["/create"] = parameter =>
+                             {
+                                 return View["/recommend/create"];
+                             };
             Put["/"] = parameter =>
                        {
                            return Request.Form["Id"];
@@ -25,7 +29,11 @@ namespace Showdown.Nancy.Modules
                        new Recommendation{Id = 1, Content = "This is an awesome recommendation", 
                                           Reason = "Becuase I feel like it", RecommendationType = RecommendationType.Buy},
                        new Recommendation{Id = 2, Content = "This is an awesome recommendation", 
-                                          Reason = "Becuase I feel like it", RecommendationType = RecommendationType.Eat}
+                                          Reason = "Becuase I feel like it", RecommendationType = RecommendationType.Eat},
+                       new Recommendation{Id = 3, Content = "This is an awesome recommendation", 
+                                          Reason = "Becuase I feel like it", RecommendationType = RecommendationType.Eat},
+                       new Recommendation{Id = 1, Content = "This is an awesome recommendation", 
+                                          Reason = "Becuase I feel like it", RecommendationType = RecommendationType.Buy}
                    };
         }
     }

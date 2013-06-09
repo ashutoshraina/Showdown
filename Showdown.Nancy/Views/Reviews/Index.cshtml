@@ -28,63 +28,66 @@
 
 @RenderBody()
 
-<body>
-    <section id="Reviews">
-        <div class="page-header offset1">
-            <hgroup>
-                <h4 class="pull-right">
-                    <a href="#reviewModal" role="alert" class="btn btn-info" data-toggle="modal">Create a Review</a>
-                </h4>
-                <h1>Reviews
-                </h1>
-            </hgroup>
-        </div>
-        <div class="container">
-            @{
-                foreach (var restaurant in Model)
-                    {
+<section id="Reviews">
+    <div class="page-header offset1">
+        <hgroup>
+            <h4 class="pull-right">
+                <a href="#reviewModal" role="alert" class="btn btn-info" data-toggle="modal">Create a Review</a>
+            </h4>
+            <h1>Reviews
+            </h1>
+        </hgroup>
+    </div>
+    <div class="container">
+        @{
+            foreach (var restaurant in Model)
+            {
                 <div class="row offset1">
                     @DisplayRestaurant( restaurant )
                 </div>
-                    }
             }
-        </div>
-    </section>
+        }
+    </div>
+</section>
 
-    <section id="New Review">
-        <br />
-        <div id="reviewModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-body">
 
-                <hgroup>
-                    <h2>Create a New Review</h2>
-                    <h5>Select the Restaurant to Review.</h5>
-                </hgroup>
+<section id="New Review">
+    <br />
+    <div id="reviewModal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-body">
 
-                <form id="form_review">
-                    <select name="restaurant" id="restaurant">
-                        @foreach (var restaurant in Model)
-                            {
-                            <option value="@restaurant.Id">@restaurant.Name</option>
-                        }
-                    </select>
-                    <br />
-                    <textarea name="new-review" id="new-review" placeholder="Review" rows="10" style="width: 550px;"></textarea>
-                    <br />
-                </form>
+            <hgroup>
+                <h2>Create a New Review</h2>
+                <h5>Select the Restaurant to Review.</h5>
+            </hgroup>
 
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                <button class="btn btn-primary" type="submit" onclick="createReview()">Create Review</button>
-            </div>
-
+            <form id="form_review">
+                <select name="restaurant" id="restaurant">
+                    @foreach (var restaurant in Model)
+                    {
+                        <option value="@restaurant.Id">@restaurant.Name</option>
+                    }
+                </select>
+                <br />
+                <textarea name="new-review" id="new-review" placeholder="Review" rows="10" style="width: 550px;"></textarea>
+                <br />
+            </form>
 
         </div>
-    </section>
-    
-    <script type="text/javascript">
+
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button class="btn btn-primary" type="submit" onclick="createReview()">Create Review</button>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts
+
+@section MyScripts 
+{
+        <script type="text/javascript">
         function createReview()
         {
             var url = "/review/create/";
@@ -103,4 +106,4 @@
 
         }
     </script>
-</body>
+}

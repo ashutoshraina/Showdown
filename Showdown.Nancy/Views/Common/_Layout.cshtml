@@ -73,7 +73,6 @@
                 </div>
             </div>
         </div>
-
         @RenderBody()
         <div id="footer">
             <hr/>
@@ -81,15 +80,23 @@
                 <p class="muted">&copy; Showdown2013</p>
             </div>
         </div>
+        
+        @RenderSection("Scripts" ,required : true)
+        
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <script>
+                window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
+            </script>
+            <script src="../../assets/js/vendor/bootstrap.min.js"></script>
+            <script src="../../assets/js/vendor/bootbox.min.js"></script>
+            <script src="../../assets/js/plugins.js"></script>
+            <script src="../../assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+            <script src="../../assets/js/vendor/bootstrap-editable.min.js"></script>
+        
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>
-            window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-1.9.1.min.js"><\/script>')
-        </script>
-        <script src="../../assets/js/vendor/bootstrap.min.js"></script>
-        <script src="../../assets/js/vendor/bootbox.min.js"></script>
-        <script src="../../assets/js/plugins.js"></script>
-        <script src="../../assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+        <!-- 
+            <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+            -->
+        @RenderSection("MyScripts", required : false )
     </body>
 </html>
