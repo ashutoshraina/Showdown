@@ -1,5 +1,6 @@
-﻿@using Showdown.Model
-@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<System.Collections.Generic.IEnumerable<Showdown.Model.Recipe>>
+﻿@using System.Linq
+@using Showdown.Model
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<System.Collections.Generic.IEnumerable<IGrouping<Category, Showdown.Model.Recipe>>>
 
 @{
     ViewBag.Title = "Recipes";
@@ -8,51 +9,40 @@
 
 @helper DisplayRecipes()
     {
-       <table class="table table-bordered table-striped table-hover">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th>Content</th>
-                        <th>Category</th>
-                        <th>Ingredients</th>
-                        <th>Recipe Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var m in Model)
-                        {
-                        <tr>
-                            <td>@m.Id</td>
-                            <td>@m.Name</td>
-                            <td>
-                                <p>@m.Content</p>
-                            </td>
-                            <td>
-                                @foreach (var category in @m.Category)
-                                    {
-                                        <p>@category</p>
-                                    }
-                            </td>
-                            <td>
-                                @foreach (var ingredient in @m.Ingredients)
-                                    {
-                                        <p>@ingredient.Name : @ingredient.Quantity </p>      
-                                    }
-                            </td>
-                            <td>@m.RecipeImageUrl</td>
-                        </tr>
-                        }
-                </tbody>
-        </table>
-    }
+    
+    @foreach (var recipeByCateogry in Model)
+        {
+        <h2 data-name="category" data-type="select" data-pk="@recipeByCateogry.Key" data-url="/recipe/category" data-original-title="Category">@recipeByCateogry.Key</h2>
+        foreach (var m in recipeByCateogry)
+            {
+                <div class="row-fluid">
+                    <div class="thumbnail span8 offset2">
+                         <div class="pull-right">
+                                <a href="/recipe/remove" role="alert" class="btn btn-info">Remove Recipe</a>
+                            </div>
+                        <div class="caption">
+                            <h3 data-name="name" data-type="text" data-pk="@m.Id" data-url="/recipe/name" data-original-title="Name">@m.Name</h3>
+                            <a class="pull-right">@m.RecipeImageUrl</a>
+                            <br />
+                            <p data-name="content" data-type="textarea" data-pk="@m.Id" data-url="/recipe/content" data-original-title="Content">@m.Content</p>  
+                            @foreach (var ingredient in @m.Ingredients)
+                            {
+                                <p>@ingredient.Name : @ingredient.Quantity </p>
+                            }
+                        </div>
+                    </div>
+                </div>
+        <br/>
+            }
+        }
+}
 
 @RenderBody()
 <section id="Recipes">
     <div class="page-header offset1">
 
         <div class="pull-right">
-            <a href="/recipe/create" role="alert" class="btn btn-info" data-toggle="modal">Create a Recipe</a>
+            <a href="/recipe/create" role="alert" class="btn btn-info">Create a Recipe</a>
         </div>
 
         <h1>Recipes</h1>
@@ -60,6 +50,42 @@
     <div class="container offset1">
         @DisplayRecipes()
     </div>
-
 </section>
-@section Scripts
+
+@section Scripts{}
+@section MyScripts
+{
+    <script type="text/javascript">
+        $(document).ready(
+            function() {
+                $('.caption p').editable({
+                    ajaxOptions: {
+                        type: 'put'
+                    },
+                    mode: 'popup',
+                    inputclass: 'input-xlarge'
+                });
+                $('.caption h3').editable({
+                    ajaxOptions: {
+                        type: 'put'
+                    },
+                    mode: 'popup'
+                });
+                $('.caption small').editable({
+                    type: 'select',
+                    source: [
+                                { value: 'Veg', text: "Veg"},
+                                { value: 'NonVeg', text: "Non-Veg" },
+                                { value: 'Cakes', text: 'Cakes' },
+                                { value: 'Pastry', text: 'Pastry' },
+                                {value : 'Vegan', text : 'Vegan'}
+                            ],
+                ajaxOptions: {
+                                 type: 'put'
+                             },
+                mode: 'popup'
+            });
+        }
+        );
+    </script>
+}
